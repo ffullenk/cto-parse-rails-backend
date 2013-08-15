@@ -1,6 +1,6 @@
-source 'http://rubygems.org'
-
-gem 'rails', '3.1.3'
+source 'https://rubygems.org'
+ruby '2.0.0'
+gem 'rails'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -16,8 +16,14 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'bootstrap-sass'
+gem "simple_form"
 gem 'parse_resource', :git => 'git@github.com:adelevie/parse_resource.git'
-
+gem "parse_resource_rails"
+gem "parse-ruby-client"
+gem 'quiet_assets', :group => :development
+gem "better_errors"
+gem "binding_of_caller"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

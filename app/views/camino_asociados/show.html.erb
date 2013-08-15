@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Caminoid:</b>
+  <%= @camino_asociado.caminoId %>
+</p>
+
+<p>
+  <b>Asociadoid:</b>
+  <%= @camino_asociado.asociadoId %>
+</p>
+
+
+<%= link_to 'Edit', edit_camino_asociado_path(@camino_asociado) %> |
+<%= link_to 'Back', camino_asociados_path %>

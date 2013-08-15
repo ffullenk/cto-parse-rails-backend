@@ -7,6 +7,7 @@ require "action_mailer/railtie"
 require "active_resource/railtie"
 require "sprockets/railtie"
 require "rails/test_unit/railtie"
+require 'parse-ruby-client'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -50,5 +51,13 @@ module ParseRailsBoilerplate
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.generators do |g|
+        g.orm             :parse_resource
+    end
+
+    Parse.init :application_id => "l7y6B6x1Fd99hSkM6vRmvbOPBehuV6qP1h0cr3Sz",
+           :api_key        => "1VYPGcpkJZoC32DCMAMQFkGvLs2axoN3yGCpVSMV"
+           
   end
 end

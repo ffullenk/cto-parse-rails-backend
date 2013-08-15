@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @camino.nombre %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @camino.descripcion %>
+</p>
+
+<p>
+  <b>Foto:</b>
+  <%= @camino.foto %>
+</p>
+
+<p>
+  <b>Mapa:</b>
+  <%= @camino.mapa %>
+</p>
+
+
+<%= link_to 'Edit', edit_camino_path(@camino) %> |
+<%= link_to 'Back', caminos_path %>

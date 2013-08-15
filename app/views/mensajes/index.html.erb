@@ -1,0 +1,17 @@
+
+      <a href="<%=new_mensaje_path %> " class="btn btn-primary"><i class="icon-plus"></i> New mensaje</a>
+   
+          <br>
+          <% @mensajes.each do |mensaje| %>
+          <tr>
+            <td><%= mensaje.id %></td>
+            <td><%= mensaje.texto %></td>
+            <td><%= link_to 'Show', mensaje %>
+              <%= link_to 'Edit', edit_mensaje_path(mensaje) %>
+            <%= link_to 'Destroy', mensaje, confirm: 'Are you sure?', method: :delete %></td>
+          </tr>
+           <td><%= link_to "Chat", mensajes_chat_path(mensaje) %></td>
+
+           <br>
+          <% end %>
+   

@@ -1,0 +1,19 @@
+<% @mensajes.each do |mensaje| %>
+<tr>
+  
+  <td><%= mensaje.texto %></td>
+  <br>
+  <% end %>
+  <br>
+
+
+  <%= simple_form_for :mensaje, :url=> responder_mensaje_path(@mensajes.first.id),:html=>{:class=>"form-horizontal uni"}  do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :texto, :as=> :text %>
+    <%= f.input :userId, :as => :hidden, :input_html => {:value => @mensajes.first.userId} %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+  <% end %>

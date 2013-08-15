@@ -1,0 +1,41 @@
+<h1>Listing asociados</h1>
+
+<table>
+  <tr>
+    <th>Facebook</th>
+    <th>Twitter</th>
+    <th>Pinterest</th>
+    <th>Nombre</th>
+    <th>Logo</th>
+    <th>Descripcion</th>
+    <th>Telefono</th>
+    <th>Direccion</th>
+    <th>Web</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @asociados.each do |asociado| %>
+  <tr>
+    <td><%= asociado.facebook %></td>
+    <td><%= asociado.twitter %></td>
+    <td><%= asociado.pinterest %></td>
+    <td><%= asociado.nombre %></td>
+    <td><%= asociado.logo %></td>
+    <td><%= asociado.descripcion %></td>
+    <td><%= asociado.telefono %></td>
+    <td><%= asociado.direccion %></td>
+    <td><%= asociado.web %></td>
+    <td><%= asociado.email %></td>
+    <td><%= link_to 'Show', asociado %></td>
+    <td><%= link_to 'Edit', edit_asociado_path(asociado) %></td>
+    <td><%= link_to 'Destroy', asociado, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Asociado', new_asociado_path %>

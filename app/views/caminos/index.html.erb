@@ -1,0 +1,29 @@
+<h1>Listing caminos</h1>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Descripcion</th>
+    <th>Foto</th>
+    <th>Mapa</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @caminos.each do |camino| %>
+  <tr>
+    <td><%= camino.nombre %></td>
+    <td><%= camino.descripcion %></td>
+    <td><%= camino.foto %></td>
+    <td><%= camino.mapa %></td>
+    <td><%= link_to 'Show', camino %></td>
+    <td><%= link_to 'Edit', edit_camino_path(camino) %></td>
+    <td><%= link_to 'Destroy', camino, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Camino', new_camino_path %>
