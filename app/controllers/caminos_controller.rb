@@ -42,15 +42,42 @@ class CaminosController < ApplicationController
   def create
     @camino = Camino.new(params[:camino])
 
-    respond_to do |format|
-      if @camino.save
-        format.html { redirect_to @camino, notice: 'Camino was successfully created.' }
-        format.json { render json: @camino, status: :created, location: @camino }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @camino.errors, status: :unprocessable_entity }
+    uploaded_file_foto = params[:camino][:foto]
+    uploaded_file_mapa = params[:camino][:mapa]
+
+
+      photo = Parse::File.new({
+        :body => File.read(uploaded_file_foto.tempfile) ,
+        :local_filename =>  uploaded_file_foto.original_filename,
+        :content_type => uploaded_file_foto.content_type
+      })
+    
+      photo.save
+
+       mapa = Parse::File.new({
+        :body => File.read(uploaded_file_mapa.tempfile) ,
+        :local_filename =>  uploaded_file_mapa.original_filename,
+        :content_type => uploaded_file_mapa.content_type
+      })
+    
+      mapa.save
+
+
+    camino = Parse::Object.new("Camino").tap do |p|
+        p["nombre"] = params[:camino][:nombre]
+        p["descripcion"] = params[:camino][:descripcion]
+
+        p["foto"] = photo
+        p["mapa"] = mapa
       end
-    end
+      
+
+    camino.save
+    
+
+    redirect_to caminos_path
+
+
   end
 
   # PUT /caminos/1

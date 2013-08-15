@@ -1,5 +1,9 @@
 class Foto < ParseResource::Base
-  field :archivo
+  field :foto
   field :descripcion
   field :categoryId
+
+
+  
+
 end

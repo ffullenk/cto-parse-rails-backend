@@ -12,7 +12,7 @@
 
 <% @fotos.each do |foto| %>
   <tr>
-    <td><%= foto.archivo %></td>
+    <td><img src="<%= foto.attributes["foto"]["url"] %>" width="200" height="150" alt="edit" /></td>
     <td><%= foto.descripcion %></td>
     <td><%= foto.categoryId %></td>
     <td><%= link_to 'Show', foto %></td>

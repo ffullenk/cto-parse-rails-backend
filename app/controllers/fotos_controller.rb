@@ -1,4 +1,5 @@
 class FotosController < ApplicationController
+  require 'open-uri'
   # GET /fotos
   # GET /fotos.json
   def index
@@ -40,17 +41,31 @@ class FotosController < ApplicationController
   # POST /fotos
   # POST /fotos.json
   def create
-    @foto = Foto.new(params[:foto])
+    
 
-    respond_to do |format|
-      if @foto.save
-        format.html { redirect_to @foto, notice: 'Foto was successfully created.' }
-        format.json { render json: @foto, status: :created, location: @foto }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @foto.errors, status: :unprocessable_entity }
+    @foto = Foto.new(params[:foto])
+    uploaded_file = params[:foto][:foto]
+    
+
+
+      photo = Parse::File.new({
+        :body => File.read(uploaded_file.tempfile) ,
+        :local_filename =>  uploaded_file.original_filename,
+        :content_type => uploaded_file.content_type
+      })
+    
+      photo.save
+    foto = Parse::Object.new("Foto").tap do |p|
+        p["foto"] = photo
+        p["descripcion"] = params[:foto][:descripcion]
+        p["categoryId"] = params[:foto][:categoryId]
       end
-    end
+      
+
+    foto.save
+    
+
+    redirect_to @foto
   end
 
   # PUT /fotos/1

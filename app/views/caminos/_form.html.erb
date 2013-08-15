@@ -1,11 +1,11 @@
-<%= simple_form_for(@camino) do |f| %>
+<%= simple_form_for @camino, :html =>{:multipart => true, :class => 'form-horizontal' } do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :nombre %>
     <%= f.input :descripcion %>
-    <%= f.input :foto %>
-    <%= f.input :mapa %>
+    <%= f.input :foto ,:as=> :file%> 
+    <%= f.input :mapa ,:as=> :file%> 
   </div>
 
   <div class="form-actions">
