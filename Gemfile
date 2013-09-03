@@ -10,13 +10,13 @@ gem 'rails'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.1.5'
+  # gem 'sass-rails',   '~> 3.1.5'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-gem 'bootstrap-sass'
+# gem 'jquery-rails'
+# gem 'bootstrap-sass'
 gem "simple_form"
 gem 'parse_resource'
 gem "parse_resource_rails"
