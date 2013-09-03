@@ -99,25 +99,25 @@ class AsociadosController < ApplicationController
 
     end
 
-      model.tap do |p|
+    model.tap do |p|
 
-        p["descripcion"] = params[:asociado][:descripcion]
-        if photo
-          p["logo"] = photo
-        end
-
-        p["categoria"] = params[:asociado][:categoria]
-        p["direccion"] = params[:asociado][:direccion]
-        p["email"] = params[:asociado][:email]
-        p["facebook"] = params[:asociado][:facebook]
-        p["nombre"] = params[:asociado][:nombre]
-        p["pinterest"] = params[:asociado][:pinterest]
-        p["telefono"] = params[:asociado][:telefono]
-        p["twitter"] = params[:asociado][:twitter]
-        p["web"] = params[:asociado][:web]
-
-
+      p["descripcion"] = params[:asociado][:descripcion]
+      if photo
+        p["logo"] = photo
       end
+
+      p["categoria"] = params[:asociado][:categoria]
+      p["direccion"] = params[:asociado][:direccion]
+      p["email"] = params[:asociado][:email]
+      p["facebook"] = params[:asociado][:facebook]
+      p["nombre"] = params[:asociado][:nombre]
+      p["pinterest"] = params[:asociado][:pinterest]
+      p["telefono"] = params[:asociado][:telefono]
+      p["twitter"] = params[:asociado][:twitter]
+      p["web"] = params[:asociado][:web]
+
+
+    end
 
 
 
