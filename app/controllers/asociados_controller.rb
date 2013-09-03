@@ -42,15 +42,40 @@ class AsociadosController < ApplicationController
   def create
     @asociado = Asociado.new(params[:asociado])
 
-    respond_to do |format|
-      if @asociado.save
-        format.html { redirect_to @asociado, notice: 'Asociado was successfully created.' }
-        format.json { render json: @asociado, status: :created, location: @asociado }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @asociado.errors, status: :unprocessable_entity }
-      end
+    uploaded_file = params[:asociado][:logo]
+
+
+
+    photo = Parse::File.new({
+                              :body => File.read(uploaded_file.tempfile) ,
+                              :local_filename =>  uploaded_file.original_filename,
+                              :content_type => uploaded_file.content_type
+    })
+
+    photo.save
+
+    model = Parse::Object.new("Asociado").tap do |p|
+      p["descripcion"] = @asociado.descripcion
+      p["logo"] = photo
+
+      p["categoria"] = @asociado.categoria
+      p["direccion"] = @asociado.direccion
+      p["email"] = @asociado.email
+      p["facebook"] = @asociado.facebook
+      p["nombre"] = @asociado.nombre
+      p["pinterest"] = @asociado.pinterest
+      p["telefono"] = @asociado.telefono
+      p["twitter"] = @asociado.twitter
+      p["web"] = @asociado.web
+
     end
+
+
+    model.save
+
+
+    redirect_to @asociado
+
   end
 
   # PUT /asociados/1
@@ -58,15 +83,52 @@ class AsociadosController < ApplicationController
   def update
     @asociado = Asociado.find(params[:id])
 
-    respond_to do |format|
-      if @asociado.update_attributes(params[:asociado])
-        format.html { redirect_to @asociado, notice: 'Asociado was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @asociado.errors, status: :unprocessable_entity }
-      end
+    @asociado = params[:asociado]
+    model = Parse::Query.new("Asociado").eq("objectId", params[:id]).get.first
+
+    if params[:asociado][:logo]
+      uploaded_file = params[:asociado][:logo]
+      photo = Parse::File.new({
+                                :body => File.read(uploaded_file.tempfile) ,
+                                :local_filename =>  uploaded_file.original_filename,
+                                :content_type => uploaded_file.content_type
+      })
+
+      photo.save
+
+
     end
+
+      model.tap do |p|
+
+        p["descripcion"] = params[:asociado][:descripcion]
+        if photo
+          p["logo"] = photo
+        end
+
+        p["categoria"] = params[:asociado][:categoria]
+        p["direccion"] = params[:asociado][:direccion]
+        p["email"] = params[:asociado][:email]
+        p["facebook"] = params[:asociado][:facebook]
+        p["nombre"] = params[:asociado][:nombre]
+        p["pinterest"] = params[:asociado][:pinterest]
+        p["telefono"] = params[:asociado][:telefono]
+        p["twitter"] = params[:asociado][:twitter]
+        p["web"] = params[:asociado][:web]
+
+
+      end
+
+
+
+
+
+
+    model.save
+
+
+    redirect_to @asociado
+
   end
 
   # DELETE /asociados/1

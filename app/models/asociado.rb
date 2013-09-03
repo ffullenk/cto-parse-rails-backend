@@ -9,4 +9,5 @@ class Asociado < ParseResource::Base
   field :direccion
   field :web
   field :email
+  field :categoria
 end

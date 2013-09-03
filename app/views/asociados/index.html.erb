@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>logo</th>
     <th>Facebook</th>
     <th>Twitter</th>
     <th>Pinterest</th>
@@ -19,6 +20,7 @@
 
 <% @asociados.each do |asociado| %>
   <tr>
+    <td><img src="<%= asociado.attributes["logo"]["url"] if asociado.attributes["logo"].present? %>" width="100" height="100" alt="logo" /></td>
     <td><%= asociado.facebook %></td>
     <td><%= asociado.twitter %></td>
     <td><%= asociado.pinterest %></td>
