@@ -18,7 +18,7 @@ end
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem "simple_form"
-gem 'parse_resource', :git => 'git@github.com:adelevie/parse_resource.git'
+gem 'parse_resource'
 gem "parse_resource_rails"
 gem "parse-ruby-client"
 gem 'quiet_assets', :group => :development

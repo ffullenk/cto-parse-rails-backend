@@ -1,12 +1,3 @@
-GIT
-  remote: git@github.com:adelevie/parse_resource.git
-  revision: 7851169f01ba65c4735d5b703b7d0bc1b097f0f0
-  specs:
-    parse_resource (1.7.1)
-      activemodel
-      activesupport
-      rest-client
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -79,6 +70,11 @@ GEM
     parse-ruby-client (0.1.15)
       iron_mq
       patron
+    parse_resource (1.8.0)
+      activemodel
+      activesupport
+      json
+      rest-client
     parse_resource_rails (0.0.2)
       parse_resource
       rails (>= 3.0.0)
@@ -153,7 +149,7 @@ DEPENDENCIES
   coffee-rails (~> 3.1.1)
   jquery-rails
   parse-ruby-client
-  parse_resource!
+  parse_resource
   parse_resource_rails
   quiet_assets
   rails
