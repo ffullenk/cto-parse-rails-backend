@@ -43,7 +43,6 @@ module ParseRailsBoilerplate
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
     config.time_zone = 'Santiago'
-    config.active_record.default_timezone = :local
 
 
     # Configure sensitive parameters which will be filtered from the log file.
