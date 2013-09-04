@@ -1,4 +1,31 @@
 class NewsController < ApplicationController
+
+
+
+    def buscar
+
+    query = params[:q].split("+")
+
+     @news = Array.new
+     News.all.each do |a|
+        query.each do |q|
+        if (a.texto.downcase.include? q.downcase)
+          if not @news.include?(a)
+            @news.push(a)
+          end
+        end
+      end
+     end
+
+    respond_to do |format|
+      format.html # buscar.html.erb
+      format.json { render json: @news }
+    end
+
+      
+  end
+
+
   # GET /news
   # GET /news.json
   def index

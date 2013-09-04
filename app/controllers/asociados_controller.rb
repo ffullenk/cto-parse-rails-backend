@@ -1,4 +1,31 @@
 class AsociadosController < ApplicationController
+
+
+
+  def buscar
+    # @asociados = Parse::Query.new("Asociado").tap do |q|
+    #     q.value_in("descripcion", ["sadasd"])
+    #   end.get
+    query = params[:q].split("+")
+
+     @asociados = Array.new
+     Asociado.all.each do |a|
+        query.each do |q|
+        if ((a.descripcion.downcase.include? q.downcase) or (a.nombre.downcase.include? q.downcase))
+          if not @asociados.include?(a)
+            @asociados.push(a)
+          end
+        end
+      end
+     end
+
+    respond_to do |format|
+      format.html # buscar.html.erb
+      format.json { render json: @asociados }
+    end
+  
+  end
+
   # GET /asociados
   # GET /asociados.json
   def index

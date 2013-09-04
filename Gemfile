@@ -28,7 +28,7 @@ gem "binding_of_caller", :group => :development
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn', :group => :production
 
 # Deploy with Capistrano
 # gem 'capistrano'

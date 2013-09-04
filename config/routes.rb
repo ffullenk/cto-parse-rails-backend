@@ -9,12 +9,13 @@ ParseRailsBoilerplate::Application.routes.draw do
 
 
   resources :fotos
-
+  match "asociados/:q" => "asociados#buscar", :as => "buscar_asociados" 
   resources :asociados
-
+    match "news/:q" => "news#buscar", :as => "buscar_news" 
   resources :news
 
-    match "mensajes/:id/chat/responder" => "mensajes#responder_chat", :as => "responder_mensaje"  
+     
+  match "mensajes/:id/chat/responder" => "mensajes#responder_chat", :as => "responder_mensaje"  
   match "mensajes/:id/chat" => "mensajes#chat", :as => "mensajes_chat"  
 
   resources :mensajes
