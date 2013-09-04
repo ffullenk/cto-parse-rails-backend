@@ -1,0 +1,30 @@
+<% primero=false %>
+<% if @news.count > 0 %>
+<% @news.each_with_index do |n, index| %>
+    <%if index.eql? 0 %>
+    <% primero=true %>
+        <div id="texto-busqueda">
+         <%else%>
+            <div id="texto-busqueda" style="margin-top:10px;">
+    <%end%>
+    <%= n.resumen %>
+        </div>
+    <%end%>
+
+<%end%>
+
+
+<% if @asociados.count > 0 %>
+<% @asociados.each_with_index do |n, index| %>
+    <%if not primero.presence %>
+        <div id="texto-busqueda">
+         <%else%>
+            <div id="texto-busqueda" style="margin-top:10px;">
+    <%end%>
+    <%= n.nombre %><br>
+    <%= n.descripcion %>
+
+        </div>
+    <%end%>
+
+<%end%>
