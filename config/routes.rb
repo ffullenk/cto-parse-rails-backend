@@ -1,4 +1,6 @@
 ParseRailsBoilerplate::Application.routes.draw do
+
+   match "asociados/:q" => "asociados#buscar", :as => "buscar_asociados" 
   resources :categories
 
   resources :categoria
@@ -9,7 +11,7 @@ ParseRailsBoilerplate::Application.routes.draw do
 
 
   resources :fotos
-  match "asociados/:q" => "asociados#buscar", :as => "buscar_asociados" 
+ 
   resources :asociados
     match "news/:q" => "news#buscar", :as => "buscar_news" 
   resources :news
