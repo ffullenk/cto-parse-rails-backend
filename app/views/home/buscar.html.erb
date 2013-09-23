@@ -28,3 +28,28 @@
     <%end%>
 
 <%end%>
+
+<% if @fotos.count > 0 %>
+<% @fotos.each_with_index do |n, index| %>
+    <%if not primero.presence %>
+        <div id="texto-busqueda">
+         <%else%>
+            <div id="texto-busqueda" style="margin-top:10px;">
+    <%end%>
+    <img src="<%= n.attributes["foto"]["url"] %>" width="200" height="150" alt="edit" />
+    <%= n.descripcion %>
+
+        </div>
+    <%end%>
+
+<%end%>
+
+<% if @noresultados %>
+
+    <div id="texto-busqueda">
+        No hay resultados para la búsqueda
+    </div>
+<%end%>
+    
+
+
