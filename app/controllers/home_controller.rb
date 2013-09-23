@@ -42,7 +42,7 @@ class HomeController < ApplicationController
      end
 
 
-     if ((@fotos.count.eql? 0) or (@asociados.count.eql? 0) or (@news.count.eql? 0))
+     if ((@fotos.count.eql? 0) and (@asociados.count.eql? 0) and (@news.count.eql? 0))
       @noresultados = true
     else
       @noresultados = false
