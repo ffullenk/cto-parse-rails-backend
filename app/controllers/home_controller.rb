@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 	layout "buscar"
 
 	def buscar
-
+    @resultados = Array.new
 
 	query = params[:q].split("+")
 
@@ -49,7 +49,13 @@ class HomeController < ApplicationController
     end
 
 
-
+    @resultados.push(@asociados)
+    @resultados.push(@news)
+     @resultados.push(@fotos)
+     respond_to do |format|
+      format.html 
+      format.json { render json: @resultados }
+    end
 
 	
 	end
