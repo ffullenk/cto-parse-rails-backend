@@ -24,6 +24,7 @@ gem "parse-ruby-client"
 gem 'quiet_assets', :group => :development
 gem "better_errors", :group => :development
 gem "binding_of_caller", :group => :development
+gem 'rails_12factor'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
