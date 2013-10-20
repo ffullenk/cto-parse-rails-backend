@@ -58,10 +58,10 @@ class HomeController < ApplicationController
       @resultados.push(@news)
     end
 
-       if @fotos.count >0
+       if @news.count >0
       @resultados.push(@news)
     end
-    
+    a
      respond_to do |format|
       format.html 
       format.json { render json: @resultados}
