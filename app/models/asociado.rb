@@ -10,4 +10,9 @@ class Asociado < ParseResource::Base
   field :web
   field :email
   field :categoria
+  field :tipo
+
+   def class_name
+    self.class.name
+  end
 end

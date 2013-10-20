@@ -48,13 +48,23 @@ class HomeController < ApplicationController
       @noresultados = false
     end
 
+  
 
-    @resultados.push(@asociados)
-    @resultados.push(@news)
-     @resultados.push(@fotos)
+    if @asociados.count >0
+      @resultados.push(@asociados)
+    end
+
+     if @news.count >0
+      @resultados.push(@news)
+    end
+
+       if @fotos.count >0
+      @resultados.push(@news)
+    end
+    
      respond_to do |format|
       format.html 
-      format.json { render json: @resultados }
+      format.json { render json: @resultados}
     end
 
 	
