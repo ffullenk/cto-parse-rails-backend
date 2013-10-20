@@ -30,6 +30,7 @@ gem 'rails_12factor'
 
 # Use unicorn as the web server
 gem 'unicorn', :group => :production
+gem 'newrelic_rpm', :group => :production
 
 # Deploy with Capistrano
 # gem 'capistrano'
